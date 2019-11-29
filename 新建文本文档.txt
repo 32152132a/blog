@@ -1,0 +1,35 @@
+安装 git 
+msysgit.github.io
+
+安装时
+选择 Use git from git bash only.., 其他默认下一步
+
+配置git 
+ git config --global user.name ‘qyq’
+ git config -- global user.email "1611042821@qq.com"
+
+搭建git服务器（远程服务）：统一的托管网站（https：//github.com）
+为了本地和远程仓库之间进行免秘钥登录，可以配置ssh
+$ ssh-keygen -t rsa -C 1611042821@qq.com 一路回车
+id_rsa.pub 添加但github -- settings -ssh 本地秘钥 仓库私钥
+
+测试连通性：
+ssh -T git@github.com
+成功后
+会在.ssh下生成 known_hosts文件
+
+本地新建项目
+git init
+
+github建立项目 项目 https://github.com/32152132a/blog.git
+git remote add oragin https://github.com/32152132a/blog.git
+
+第一次发布项目 add - commit - push
+git add .
+git commit -m '注释'（默认master分支）
+
+git remote add origin git@github.com:32152132a/blog.git
+
+git push -u origin master
+
+git pull --rebase origin master  本地分支和仓库关联 生成本地md文件 也可手动
