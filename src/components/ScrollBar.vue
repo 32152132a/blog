@@ -12,8 +12,7 @@
             </div>
             <div class="contribute">
                     <i class="el-icon-chicken"></i>
-                    <span>投稿</span>
-                   
+                    <span>投稿</span>    
             </div>
         </div>
     </div>

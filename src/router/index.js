@@ -1,15 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '../views/Index.vue'
+import Content from '@/views/content/index'
+import About from '@/views/about/index'
+import Index from '@/views/Index'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'index',
-    component: Index
+    component: Index,
+    children: [
+      {
+        path: '/Index/content',
+        name: 'content',
+        component: Content
+      },
+      {
+        path: '/Index/about',
+        name: 'about',
+        component: About
+      },
+      
+    ]
   }
+
 ]
 
 const router = new VueRouter({

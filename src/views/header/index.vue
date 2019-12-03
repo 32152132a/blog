@@ -67,5 +67,6 @@
         height: 400px;
         background: url('https://website-oss.oss-cn-beijing.aliyuncs.com/common/img/bg5.jpg') center center no-repeat;
         background-size: cover;
+        text-align: center;
     }
 </style>

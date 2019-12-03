@@ -3,19 +3,24 @@
 <div class=''>
     <v-header></v-header>
     <v-nav></v-nav>
-    <span>https://cuiqingcai.com/</span>
-    <span>http://www.zfowed.com/</span>
-    <span>https://element.eleme.cn/#/zh-CN/component/icon</span>
+    <!-- <v-content></v-content> -->
+    <div class='Index'>
+        <router-view/>
+        <sidebar></sidebar>
+    </div>
 </div>
 </template>
 
 <script>
-import header from '@/views/header/header'
-import nav from '@/views/navtab/nav'
+import header from '@/views/header/index'
+import nav from '@/views/navtab/index'
+import sidebar from '@/components/sidebar'
+// import content from '@/views/content/index'
 export default {
 components: {
     'v-header':header,
-    'v-nav':nav
+    'v-nav':nav,
+    'sidebar':sidebar
 },
 data() {
 //这里存放数据
@@ -48,6 +53,12 @@ destroyed() {}, //生命周期 - 销毁完成
 activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
-<style  scoped>
-
+<style scoped>
+    .Index {
+        display: grid;
+        grid-template-columns: 1fr 250px;
+        align-content: space-evenly;
+        padding: 10px 20px;
+        gap: 20px;
+    }
 </style>
