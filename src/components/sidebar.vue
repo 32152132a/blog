@@ -2,7 +2,7 @@
     <div class='sidebar'>
         <div class='sidebar-contact'>
             <el-image v-for="(item,value) in squareUrlList" style="width: 45px; height:40px" :src="item" :key='value'
-                :fit="contain"></el-image>
+                fit="contain"></el-image>
         </div>
         <div class='sidebar-tab'>
             <div class='sidebar-tab-header'>

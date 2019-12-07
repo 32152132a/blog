@@ -7,7 +7,7 @@
             <div class='header-name'>
                 <span>曲永庆的寒舍</span>
             </div>
-        </div>
+          </div>
        
     </div>
 </template>
@@ -49,6 +49,7 @@
     }
 </script>
 <style scoped>
+    @import url('./style.css');
     .el-avatar {
         width: 150px;
         height: 150px;
@@ -62,11 +63,16 @@
         font-family: '楷体';
         color: #fff;
     }
-
+    .header-name span{
+        display: inline-block;
+        animation: shake-slow 5s infinite;
+    }
+    
     .header {
         height: 400px;
         background: url('https://website-oss.oss-cn-beijing.aliyuncs.com/common/img/bg5.jpg') center center no-repeat;
         background-size: cover;
         text-align: center;
     }
+    
 </style>

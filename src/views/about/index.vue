@@ -15,15 +15,18 @@
                 博主技术栈
             </div>
             <div class='about-technology'>
-                暂无
+                <Echarts></Echarts>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import Echarts from './echarts'
     export default {
-        components: {},
+        components: {
+            'Echarts':Echarts
+        },
         data() {
             //这里存放数据
             return {
