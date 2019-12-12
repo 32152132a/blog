@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Content from '@/views/content/index'
 import About from '@/views/about/index'
+import Backstage from '@/views/backstage/index'
 import Index from '@/views/Index'
 
 Vue.use(VueRouter)
@@ -20,6 +21,16 @@ const routes = [
         path: '/Index/about',
         name: 'about',
         component: About
+      },
+      {
+        path: '/Index/backstage',
+        name: 'backstage',
+        component: Backstage
+      },
+      {
+        path: '*',
+        name: 'content',
+        component: Content
       },
       
     ]

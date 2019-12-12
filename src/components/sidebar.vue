@@ -38,12 +38,16 @@
                 </ul>
             </div>
         </div>
+        <catKeyboard></catKeyboard>
     </div>
 </template>
 
 <script>
+    import catKeyboard from '@/components/animate/catKeyboard'
     export default {
-        components: {},
+        components: {
+            catKeyboard
+        },
         data() {
             //这里存放数据
             return {

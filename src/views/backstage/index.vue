@@ -1,33 +1,14 @@
-
+<!--  -->
 <template>
-<div class=''>
-    <v-header></v-header>
-    <v-nav></v-nav>
-    <!-- <v-content></v-content> -->
-    <div class='Index'>
-        <router-view/>
-        <sidebar></sidebar>
-    </div>
-    <canvasBg></canvasBg>
+<div class='backstage'>
+    ss
 </div>
 </template>
 
 <script>
-import header from '@/views/header/index'
-import nav from '@/views/navtab/index'
-import sidebar from '@/components/sidebar'
-import canvasBg from '@/components/animate/canvasBg'
 
-
-
-// import content from '@/views/content/index'
 export default {
-components: {
-    'v-header':header,
-    'v-nav':nav,
-    'sidebar':sidebar,
-    canvasBg
-},
+components: {},
 data() {
 //这里存放数据
 return {
@@ -59,12 +40,6 @@ destroyed() {}, //生命周期 - 销毁完成
 activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
-<style scoped>
-    .Index {
-        display: grid;
-        grid-template-columns: 1fr 250px;
-        align-content: space-evenly;
-        padding: 10px 20px;
-        gap: 20px;
-    }
+<style  scoped>
+
 </style>
