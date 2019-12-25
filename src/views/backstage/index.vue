@@ -1,14 +1,16 @@
 <!--  -->
 <template>
 <div class='backstage'>
-    ss
+    <UEditor ref='UEditor'></UEditor>
 </div>
 </template>
 
 <script>
-
+import UEditor from '@/components/UEditor'
 export default {
-components: {},
+components: {
+    UEditor
+},
 data() {
 //这里存放数据
 return {
