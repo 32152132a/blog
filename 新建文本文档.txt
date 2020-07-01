@@ -38,3 +38,10 @@ git pull --rebase origin master  本地分支和仓库关联 生成本地md文件 也可手动
 
 业务流程 
 创建项目-> 配置ssh -> clone -> 创建分支 ->  add commit -> push -> pull -> 通过 ->  合并分支 
+
+git branch 显示分支 git log 查看提交
+git checkout -b '' 新建分支并换分支
+get merge '' 合并分支
+get status 查看状态
+get reset '' 版本回调
+git stash 暂存修改的代码 git stash pop 释放修改的代码

@@ -51,10 +51,9 @@
 import {
   getArticle
 } from '@/axios/api/article'
-import footer from '@/views/footer/index'
-import nav from '@/views/navtab/index'
-import sidebar from '@/components/sidebar'
-// import content from '@/views/content/index'
+import footer from '@/layouts/footer/index'
+import nav from '@/layouts/navtab/index'
+import sidebar from '@/components/SideBar'
 export default {
   components: {
     'v-footer': footer,

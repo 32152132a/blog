@@ -6,7 +6,6 @@
     <!-- <v-content></v-content> -->
     <div class='Index'>
       <div class='content'>
-
         <router-view />
       </div>
       <sidebar></sidebar>
@@ -17,10 +16,10 @@
 </template>
 
 <script>
-import header from '@/views/header/index'
-import footer from '@/views/footer/index'
-import nav from '@/views/navtab/index'
-import sidebar from '@/components/sidebar'
+import header from '@/layouts/header/index'
+import footer from '@/layouts/footer/index'
+import nav from '@/layouts/navtab/index'
+import sidebar from '@/components/SideBar'
 import canvasBg from '@/components/animate/canvasBg'
 
 

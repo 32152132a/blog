@@ -17,7 +17,7 @@ const routes = [{
     children: [{
         path: '/Index/content',
         name: 'content',
-        component: () => import('@/views/content/index')
+        component: () => import('@/layouts/content/index')
       },
       {
         path: '/Index/about',
@@ -37,7 +37,7 @@ const routes = [{
       {
         path: '/Index/login',
         name: 'login',
-        component: () => import('@/views/login/index')
+        component: () => import('@/components/login/index')
       },
       {
         path: '*',
