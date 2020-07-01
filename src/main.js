@@ -3,11 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import config from './lib/config/config.js'
+import Axios from 'axios';
+Vue.prototype.$axios = Axios
+// Axios.defaults.baseURL = '//www.96qufei.cn/api'
+// Axios.defaults.headers.post['Content-Type'] = 'application/json';
 Vue.use(config)
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
+
 
 
 // import echarts from 'echarts'

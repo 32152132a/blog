@@ -1,40 +1,53 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Content from '@/views/content/index'
-import About from '@/views/about/index'
-import Backstage from '@/views/backstage/index'
+import link from '@/views/link/index'
 import Index from '@/views/Index'
 
 Vue.use(VueRouter)
 
-const routes = [
+const routes = [{
+    path: '/article',
+    name: 'article',
+    component: () => import('../components/content/article'),
+
+  },
   {
     path: '/',
     component: Index,
-    children: [
-      {
+    children: [{
         path: '/Index/content',
         name: 'content',
-        component: Content
+        component: () => import('@/views/content/index')
       },
       {
         path: '/Index/about',
         name: 'about',
-        component: About
+        component: () => import('@/views/about/index')
+      },
+      {
+        path: '/Index/leaveAMessage',
+        name: 'leaveAMessage',
+        component: () => import('@/views/leaveAMessage/index')
       },
       {
         path: '/Index/backstage',
         name: 'backstage',
-        component: Backstage
+        component: () => import('@/views/backstage/index')
+      },
+      {
+        path: '/Index/login',
+        name: 'login',
+        component: () => import('@/views/login/index')
       },
       {
         path: '*',
-        name: 'content',
-        component: Content
+        name: 'link',
+        component: link
       },
-      
+
     ]
   }
+
 
 ]
 

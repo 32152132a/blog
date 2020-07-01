@@ -1,29 +1,36 @@
+
 <template>
-  <div class='header'>
-    <div>
+  <div class='login'>
+    <el-form label-position="left" label-width="50px" :model="form">
       <div class='header-img'>
         <el-avatar :src="imgSrc"></el-avatar>
       </div>
-      <div class='header-name'>
-        <span>{{name}}的寒舍</span>
-      </div>
-    </div>
-
+      <el-form-item label="邮箱">
+        <el-input v-model="form.email"></el-input>
+      </el-form-item>
+      <el-form-item label="密码">
+        <el-input v-model="form.password"></el-input>
+      </el-form-item>
+      <el-button @click='login'>登录</el-button>
+    </el-form>
   </div>
 </template>
 
 <script>
+
+// import { userLogin } from '../../axios/api/login'
 export default {
+  components: {
+  },
   data () {
     //这里存放数据
     return {
-      radne: '',
-      name: '曲永庆'
+      form: {
+        email: '1611042821@qq.com',
+        password: '345678910jqka'
+      }
     };
   },
-  components: {
-  },
-
   //监听属性 类似于data概念
   computed: {
     imgSrc () {
@@ -31,14 +38,16 @@ export default {
     }
   },
   //监控data中的数据变化
-  watch: {
-    radne (val) {
-      console.log(val)
-    }
-  },
+  watch: {},
   //方法集合
   methods: {
+    login () {
+      // userLogin(this.form).then(res => {
+      //   console.log(res)
+      // })
+      this.$store.dispatch('handleUsers', this.form)
 
+    }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created () {
@@ -46,6 +55,7 @@ export default {
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
+
   },
   beforeCreate () { }, //生命周期 - 创建之前
   beforeMount () { }, //生命周期 - 挂载之前
@@ -56,31 +66,20 @@ export default {
   activated () { }, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
-<style scoped>
-@import url("./style.css");
-.el-avatar {
-  width: 150px;
-  height: 150px;
-  margin: 120px 0 40px 0;
-  opacity: 1;
-}
-
-.header-name {
-  font-size: 30px;
-  font-weight: 500;
-  font-family: "楷体";
-  color: #fff;
-}
-.header-name span {
-  display: inline-block;
-  animation: shake-slow 5s infinite;
-}
-
-.header {
-  height: 400px;
-  background: url("https://website-oss.oss-cn-beijing.aliyuncs.com/common/img/bg5.jpg")
-    center center no-repeat;
-  background-size: cover;
+<style scoped lang='less'>
+.el-form {
   text-align: center;
+  width: 90%;
+  max-width: 600px;
+  margin: 100px auto;
+  box-shadow: 0px 0px 10px #999;
+  border-radius: 20px;
+  padding: 40px 30px;
+}
+.el-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 30px 0 50px 0;
+  opacity: 1;
 }
 </style>
