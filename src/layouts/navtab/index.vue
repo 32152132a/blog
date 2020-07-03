@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import searsh from '@/components/searsh'
+import searsh from '@/components/Searsh'
 export default {
   data () {
     return {
