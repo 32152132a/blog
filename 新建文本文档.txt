@@ -44,4 +44,4 @@ git checkout -b '' 新建分支并换分支
 get merge '' 合并分支
 get status 查看状态
 get reset '' 版本回调
-git stash 暂存修改的代码 git stash pop 释放修改的代码
+git stash 暂存修改的代码 git stash pop     释放修改的代码
