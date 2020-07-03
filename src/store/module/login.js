@@ -79,6 +79,9 @@ export default {
           })
       })
     },
+    /**
+     * 获取token 在获取用户信息
+     */
     async handleUsers(state, data) {
 
       let token = await userLogin(data)

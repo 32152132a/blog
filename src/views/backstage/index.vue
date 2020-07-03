@@ -62,9 +62,6 @@
 
 <script>
 import UEditor from '@/components/UEditor'
-import {
-  allArticle
-} from '@/axios/api/article'
 export default {
   components: {
     UEditor
@@ -110,16 +107,13 @@ export default {
       this.form.user_info_id = this.user.id
       this.form.user_info_nick = this.user.name
       this.form.user_info_cover = this.user.avatar
-      console.log(this.form)
 
-      allArticle(this.form).then(res => {
+      this.$store.dispatch('handleAddArticle', this.form).then(res => {
         this.$message({
           message: res.data.message,
           type: 'success'
         });
       })
-
-      console.log(this)
     }
   },
   mounted () {

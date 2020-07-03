@@ -27,13 +27,15 @@
         <div class="summary">
           <span>简介:</span>{{article.summary}}
         </div>
-        <div class="article_content">
-          {{article.content}}
+        <div class="article_content" v-html='article.content'>
         </div>
-        <div class="type_url" if='article.type_url'>
+        <div class="type_url" v-if='article.type_url'>
           <span>转载：</span>
           <a :href='article.type_url'>{{article.type_url}}</a>
-
+        </div>
+        <div class="type_url" v-if='!article.type_url'>
+          <span>本文原创，转载请标注</span>
+          <a :href='article.type_url'>{{article.type_url}}</a>
         </div>
         <div class='praise'>
           <el-button>很赞哦！ ({{article.review}})</el-button>
@@ -63,7 +65,7 @@ export default {
   data () {
     //这里存放数据
     return {
-
+      article: ''//数据
     };
   },
   //监听属性 类似于data概念
@@ -71,9 +73,6 @@ export default {
     id () {
       return this.$route.query.id
     },
-    article () {
-      return this.$route.params
-    }
   },
   //监控data中的数据变化
   watch: {},
@@ -87,22 +86,15 @@ export default {
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
-    console.log(this.article)
-    // if (!this.article._id) {
-    //   let form = { id: this.id }
-    //   console.log(form)
-    //   setTimeout(() => {
-    //     getArticle({ ...form }).then(res => {
-    //       console.log(res)
-    //     })
-    //     this.$axios.get(
-    //       '/api/article/getArticle', form
-    //     ).then(res => {
-    //       console.log(res)
-    //     })
-    //   }, 1000)
+    if (!Object.keys(this.$route.params).length) {
+      let form = { id: this.id }
+      getArticle(form).then(res => {
+        this.article = res.data
+      })
+    } else {
+      this.article = this.$route.params
+    }
 
-    // }
 
   },
   beforeCreate () { }, //生命周期 - 创建之前
@@ -217,7 +209,13 @@ export default {
   }
 }
 
-.sidebar {
-  // display: none;
+@media (max-width: 1000px) {
+  .sidebar {
+    display: none;
+  }
+  .article {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 </style>

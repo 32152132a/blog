@@ -1,51 +1,16 @@
 <!--  -->
 <template>
   <div class='content'>
-    <div>
-      <div class='chunk' v-for='item in article' :key='item._id' @click="details(item._id,item)">
-        <div class="chunk-header">
-          {{item.title}}
-        </div>
-        <div class="chunk-content">
-          <div class="chunk-introduce">
-            <i class="el-icon-user-solid"></i>
-            <span>{{item.user_info_nick}}</span>
-            <el-divider direction="vertical"></el-divider>
-            <i class="el-icon-watch"></i>
-            <span>{{new Date(item.created).toLocaleDateString()}}</span>
-            <el-divider direction="vertical"></el-divider>
-            <i class="el-icon-price-tag"></i>
-            <span>{{item.tags[0]}}</span>
-            <el-divider direction="vertical"></el-divider>
-            <i class="el-icon-lollipop"></i>
-            <span>❤</span>
-            <el-divider direction="vertical"></el-divider>
-            <i class="el-icon-chat-line-round"></i>
-            <span>评论</span>
-          </div>
-          <el-divider></el-divider>
-          <div class="chunk-describe">
-            <div class='chunk-describe-img'>
-              <el-image style="width: 100px; height: 100px" :src="item.cover" fit="fill" lazy>
-              </el-image>
-            </div>
-            <div class='chunk-describe-content'>
-              {{item.summary}}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <article-list :article='article'></article-list>
   </div>
 
 </template>
 
 <script>
-import {
-  allArticle
-} from '@/axios/api/article'
+import articleList from '@/components/content/articleList'
 export default {
   components: {
+    "article-list": articleList
   },
   data () {
     //这里存放数据
@@ -59,9 +24,7 @@ export default {
   watch: {},
   //方法集合
   methods: {
-    details (id, data) {
-      this.$router.push({ path: '/article', name: 'article', params: { ...data }, query: { id } })
-    }
+
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created () {
@@ -69,9 +32,8 @@ export default {
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
-    allArticle().then(res => {
-      console.log(res)
-      this.article = res.data.message
+    this.$store.dispatch('handleArticles').then(res => {
+      this.article = res.message
     })
   },
   beforeCreate () { }, //生命周期 - 创建之前

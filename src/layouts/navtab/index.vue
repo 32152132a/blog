@@ -10,23 +10,22 @@
       <param name="wmode" value="opaque"></object> -->
     <!-- <div><a href="">登录</a><span>注册</span></div> -->
     <el-button>
-      <router-link to="/Index/login">登录</router-link>
+      <router-link to="/Index/login" v-text='isLogin?"登录":"已登录"'></router-link>
     </el-button>
     <el-menu :default-active="activeIndex" class="el-menu-demo" router mode="horizontal" @select="handleSelect">
       <el-menu-item index="/">作品链接</el-menu-item>
-      <el-menu-item index="/Index/content">内容</el-menu-item>
+      <el-menu-item index="/Index/content">发布文章</el-menu-item>
       <el-menu-item index="/Index/about">关于作者</el-menu-item>
       <el-menu-item index="/Index/LeaveAMessage">留言</el-menu-item>
       <el-menu-item index="/Index/backstage" :disabled='isLogin'>编辑笔记</el-menu-item>
     </el-menu>
-
-    <!-- <ScrollBar></ScrollBar> -->
+    <searsh></searsh>
 
   </div>
 </template>
 
 <script>
-// import ScrollBar from '@/components/ScrollBar'
+import searsh from '@/components/searsh'
 export default {
   data () {
     return {
@@ -35,7 +34,7 @@ export default {
     };
   },
   components: {
-    // ScrollBar
+    searsh
   },
   computed: {
     isLogin () {

@@ -27,7 +27,7 @@ export default {
     return {
       form: {
         email: '1611042821@qq.com',
-        password: '345678910jqka'
+        password: ''
       }
     };
   },
@@ -45,7 +45,12 @@ export default {
       // userLogin(this.form).then(res => {
       //   console.log(res)
       // })
-      this.$store.dispatch('handleUsers', this.form)
+      this.$store.dispatch('handleUsers', this.form).then(res => {
+        this.$message({
+          message: '登录成功',
+          type: 'success'
+        });
+      })
 
     }
   },
