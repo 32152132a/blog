@@ -8,6 +8,11 @@
       <div class='content'>
         <router-view />
       </div>
+      <div>
+        <div v-for='(item,value) in a' :key='value'>
+          {{item}}{{value}}
+        </div>
+      </div>
       <sidebar></sidebar>
     </div>
     <canvasBg></canvasBg>
@@ -36,7 +41,11 @@ export default {
   data () {
     //这里存放数据
     return {
-
+      a: {
+        'c': 2,
+        'd': 3,
+        'e': 4
+      }
     };
   },
   //监听属性 类似于data概念
