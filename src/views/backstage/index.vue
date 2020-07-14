@@ -24,8 +24,8 @@
       </el-form-item>
 
       <el-form-item label="是否加密">
-        <el-radio v-model="form.is_private" label=true>加密</el-radio>
-        <el-radio v-model="form.is_private" label=false>不加密</el-radio>
+        <el-radio v-model="form.is_private" label=false>加密</el-radio>
+        <el-radio v-model="form.is_private" label=true>不加密</el-radio>
       </el-form-item>
       <el-form-item label="文章类型">
         <el-select v-model="form.type" placeholder="请选择">
@@ -98,25 +98,46 @@ export default {
     },
     user () {
       return this.$store.getters.getUser
-    }
+    },
+    id () {
+      return this.$route.query.id
+    },
 
   },
   methods: {
     submit () {
       this.form.content = this.$refs.UEditor.msg
       this.form.user_info_id = this.user.id
-      this.form.user_info_nick = this.user.name
+      this.form.user_info_nick = this.user.names
       this.form.user_info_cover = this.user.avatar
-
-      this.$store.dispatch('handleAddArticle', this.form).then(res => {
+      console.log(this.form)
+      let url = this.id ? 'handleUptateArticle' : 'handleAddArticle'
+      this.$store.dispatch(url, this.form).then(res => {
         this.$message({
           message: res.data.message,
           type: 'success'
         });
       })
+
+
     }
   },
   mounted () {
+    if (!Object.keys(this.$route.params).length && this.id) {
+      let form = { id: this.id }
+      this.$store.dispatch('handleGetArticle', form)
+        .then(res => {
+          this.form = res.data
+          this.form.tags = res.data.tags[0]
+          this.$refs.UEditor.msg = res.data.content
+        })
+    } else {
+      this.form = this.$route.params
+      if (Array.isArray(this.$route.params.tags)) {
+        this.form.tags = this.$route.params.tags.join()
+      }
+      this.$refs.UEditor.msg = this.$route.params.content
+    }
   }
 
 

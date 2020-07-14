@@ -9,23 +9,25 @@
       <param name="AllowScriptAccess" value="always">
       <param name="wmode" value="opaque"></object> -->
     <!-- <div><a href="">登录</a><span>注册</span></div> -->
-    <el-button>
-      <router-link to="/Index/login" v-text='isLogin?"登录":"已登录"'></router-link>
-    </el-button>
+    <div class='nav-header'>
+      <img :src="imgSrc" alt="">
+      <router-link to="/login" v-text='isLogin?"登录":"qyq"'></router-link>
+    </div>
+
     <el-menu :default-active="activeIndex" class="el-menu-demo" router mode="horizontal" @select="handleSelect">
-      <el-menu-item index="/">作品链接</el-menu-item>
-      <el-menu-item index="/Index/content">发布文章</el-menu-item>
-      <el-menu-item index="/Index/about">关于作者</el-menu-item>
-      <el-menu-item index="/Index/LeaveAMessage">留言</el-menu-item>
-      <el-menu-item index="/Index/backstage" :disabled='isLogin'>编辑笔记</el-menu-item>
+      <el-menu-item index="/"> <i class='el-icon-link'></i>作品链接</el-menu-item>
+      <el-menu-item index="/Index/content"><i class='el-icon-folder'></i>文章合集</el-menu-item>
+      <el-menu-item index="/Index/about"><i class='el-icon-user'></i>关于作者</el-menu-item>
+      <el-menu-item index="/Index/LeaveAMessage"><i class='el-icon-phone-outline'></i>作者留言</el-menu-item>
+      <el-menu-item index="/Index/plan"><i class='el-icon-date'></i>作者计划</el-menu-item>
+      <el-menu-item index="/Index/play"><i class='el-icon-link'></i>无聊游戏</el-menu-item>
+      <el-menu-item index="/Index/backstage" :disabled='isLogin'><i class='el-icon-edit'></i>编辑笔记</el-menu-item>
     </el-menu>
-    <searsh></searsh>
 
   </div>
 </template>
 
 <script>
-import searsh from '@/components/Searsh'
 export default {
   data () {
     return {
@@ -34,11 +36,16 @@ export default {
     };
   },
   components: {
-    searsh
   },
   computed: {
     isLogin () {
       return !this.$store.getters.getUser.isLogin
+    },
+    name () {
+      return !this.$store.getters.getUser.name
+    },
+    imgSrc () {
+      return this.$store.getters.getUser.avatar || 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
     }
   },
   methods: {
@@ -47,25 +54,46 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style scoped lang='less'>
 .nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 10%;
-  background-color: #fff;
+  flex-wrap: wrap;
+  background-color: rgba(255, 255, 255, 0.3);
   text-align: center;
+  border-radius: 10px;
+  color: #fff;
+  .nav-header {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    padding-left: 20px;
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+    border-bottom: 1px solid #ddd;
+  }
+  .el-menu-demo {
+    // text-align: center;
+
+    background-color: transparent;
+    .el-menu-item {
+      height: 40px;
+      width: 100%;
+      line-height: 40px;
+      color: #fff;
+      text-align: left;
+    }
+  }
+  .el-menu--horizontal > .el-menu-item.is-active {
+    border: 0px;
+  }
 }
 a {
   text-decoration: none;
 }
-.el-menu-demo {
-  text-align: center;
-  margin: 0 20px;
-}
-@media (max-width: 1000px) {
-  .nav {
-    padding: 0 2%;
-  }
+
+@media (max-width: 800px) {
 }
 </style>

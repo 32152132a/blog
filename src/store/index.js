@@ -8,9 +8,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    openMenu: false
   },
-  mutations: {},
+  mutations: {
+
+    setMenu(state, data) {
+      state.openMenu = data
+    },
+  },
+  getters: {
+    openMenu(state) {
+      return state.openMenu
+    }
+  },
   actions: {},
   modules: {
     login,

@@ -1,5 +1,7 @@
 <template>
-  <el-autocomplete v-model="state" :fetch-suggestions="querySearchAsync" placeholder="请输入内容" @select="handleSelect">
+  <el-autocomplete v-model="state" :fetch-suggestions="querySearchAsync" @select="handleSelect">
+    <i class="el-icon-search el-input__icon" slot="suffix" @click="handleIconClick">
+    </i>
   </el-autocomplete>
 </template>
 
@@ -36,11 +38,12 @@ export default {
 
       this.$store.dispatch('handleArticles').then(res => {
         this.restaurants.length = 0
-        res.message.map(k => {
+        res.map(k => {
           this.restaurants.push({ value: k.title, id: k._id })
         })
       })
-    }
+    },
+    handleIconClick () { }
 
   },
   watch: {
@@ -58,5 +61,19 @@ export default {
   }
 };
 </script>
+<style scoped >
+.el-autocomplete {
+  width: 70%;
+}
+.el-autocomplete >>> .el-input__inner {
+  background-color: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+.el-autocomplete >>> .el-input__suffix {
+  color: #fff;
+}
+</style>
 
 

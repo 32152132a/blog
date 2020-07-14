@@ -1,21 +1,17 @@
 
 <template>
-  <div class=''>
+  <div class='body'>
     <v-header></v-header>
-    <v-nav></v-nav>
+
     <!-- <v-content></v-content> -->
     <div class='Index'>
+      <v-nav></v-nav>
       <div class='content'>
         <router-view />
       </div>
-      <div>
-        <div v-for='(item,value) in a' :key='value'>
-          {{item}}{{value}}
-        </div>
-      </div>
+
       <sidebar></sidebar>
     </div>
-    <canvasBg></canvasBg>
     <v-footer></v-footer>
   </div>
 </template>
@@ -24,8 +20,7 @@
 import header from '@/layouts/header/index'
 import footer from '@/layouts/footer/index'
 import nav from '@/layouts/navtab/index'
-import sidebar from '@/components/SideBar'
-import canvasBg from '@/components/animate/canvasBg'
+import sidebar from '@/layouts/sideBar/SideBar'
 
 
 
@@ -35,17 +30,11 @@ export default {
     'v-header': header,
     'v-footer': footer,
     'v-nav': nav,
-    'sidebar': sidebar,
-    canvasBg
+    'sidebar': sidebar
   },
   data () {
     //这里存放数据
     return {
-      a: {
-        'c': 2,
-        'd': 3,
-        'e': 4
-      }
     };
   },
   //监听属性 类似于data概念
@@ -73,29 +62,43 @@ export default {
   activated () { }, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
-<style scoped>
+<style scoped lang='less'>
+.body {
+  .header {
+    max-width: 1180px;
+    margin: 0 auto;
+    border-radius: 0 0 20px 20px;
+  }
+}
 .Index {
   display: grid;
-  grid-template-columns: 1fr 250px;
+  grid-template-columns: 150px 1fr 200px;
   align-content: space-evenly;
-  gap: 20px;
+  gap: 10px;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   padding: 10px 20px;
-}
-.content {
-  min-width: 600px;
-}
-@media (max-width: 1000px) {
-  .content {
-    min-width: auto;
-    width: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  & > .content {
+    min-width: 600px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 10px 10px;
+    border-radius: 10px;
+    height: 500px;
+    overflow: auto;
   }
+}
+
+@media (max-width: 1000px) {
   .Index {
-    display: block;
+    display: grid;
+    grid-template-columns: 150px 1fr;
   }
   .sidebar {
     display: none;
   }
+}
+@media (max-width: 800px) {
 }
 </style>

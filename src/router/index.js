@@ -7,15 +7,14 @@ import exceptionPage from './exception/index'
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/article',
-    name: 'article',
-    component: () => import('../components/content/article'),
-
-  },
-  {
     path: '/exception',
     // component: exception,
     children: [...exceptionPage]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/components/login/index')
   },
   {
     path: '/',
@@ -23,7 +22,13 @@ const routes = [{
     children: [{
         path: '/Index/content',
         name: 'content',
-        component: () => import('@/layouts/content/index')
+        component: () => import('@/views/article/index')
+      },
+      {
+        path: '/Index/article',
+        name: 'article',
+        component: () => import('../components/content/article'),
+
       },
       {
         path: '/Index/about',
@@ -41,10 +46,25 @@ const routes = [{
         component: () => import('@/views/backstage/index')
       },
       {
-        path: '/Index/login',
-        name: 'login',
-        component: () => import('@/components/login/index')
+        path: '/Index/plan',
+        name: 'plan',
+        component: () => import('@/views/plan/index'),
+
       },
+      {
+        path: '/Index/play',
+        component: () => import('@/views/play/index'),
+        children: [{
+          path: '/Index/play',
+          name: 'nav',
+          component: () => import('@/views/play/nav')
+        }, {
+          path: '/Index/play/randomColor',
+          name: 'randomColor',
+          component: () => import('@/views/play/randomColor')
+        }]
+      },
+
       {
         path: '*',
         name: 'link',
