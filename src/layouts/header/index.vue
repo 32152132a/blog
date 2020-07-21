@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import searsh from '@/components/Searsh'
+import searsh from '@/components/searsh'
 export default {
   data () {
     //这里存放数据
