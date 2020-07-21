@@ -1,7 +1,7 @@
 <template>
   <div class='table'>
 
-    <el-table :data="tableData" style="width: 100%">
+    <el-table :data="tableData" style="width: 100%" :header-cell-style='style' :row-style='style'>
       <el-table-column prop="name" label="网址" width="">
       </el-table-column>
       <el-table-column prop="describe" label="描述" width="">
@@ -45,16 +45,22 @@ export default {
         name: '汽车贷款网站',
         link: 'http://www.rhzhineng.com',
         describe: '公司网站'
-      }]
+      }],
+      style: { background: "rgba(255, 255, 255, 0.6)", color: "#000" }
     }
   }
 }
   </script>
   <style scoped>
 .table {
-  background-color: #fff;
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  /* background: transparent; */
   border-radius: 10px;
   margin: 10px 0;
-  padding: 10px;
+  padding: 20px;
+}
+.el-table {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 </style>

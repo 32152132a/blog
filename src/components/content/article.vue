@@ -1,7 +1,6 @@
 
 <template>
   <div class='article'>
-    <v-nav></v-nav>
     <!-- <v-content></v-content> -->
     <div class='content'>
       <div class='header'>
@@ -42,25 +41,15 @@
         </div>
       </div>
     </div>
-    <div>
-      <sidebar></sidebar>
-    </div>
-    <v-footer></v-footer>
+
   </div>
 </template>
 
 <script>
-import {
-  getArticle
-} from '@/axios/api/article'
-import footer from '@/layouts/footer/index'
-import nav from '@/layouts/navtab/index'
-import sidebar from '@/components/SideBar'
+
 export default {
   components: {
-    'v-footer': footer,
-    'v-nav': nav,
-    'sidebar': sidebar,
+
   },
   data () {
     //这里存放数据
@@ -88,9 +77,13 @@ export default {
   mounted () {
     if (!Object.keys(this.$route.params).length) {
       let form = { id: this.id }
-      getArticle(form).then(res => {
-        this.article = res.data
-      })
+      // getArticle(form).then(res => {
+      //   this.article = res.data
+      // })
+      this.$store.dispatch('handleGetArticle', form)
+        .then(res => {
+          this.article = res.data
+        })
     } else {
       this.article = this.$route.params
     }
@@ -108,15 +101,15 @@ export default {
 </script>
 <style lang='less' scoped>
 .article {
-  display: grid;
-  grid-template-columns: 1fr 250px;
   align-content: space-evenly;
   gap: 20px;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  padding: 10px 20px;
+  padding: 10px 10px;
+
   .content {
     padding: 20px;
+    border-radius: 20px;
     background-color: #fff;
     .header {
       border-bottom: 1px solid #666;
@@ -198,14 +191,6 @@ export default {
       text-align: center;
       margin: 10px;
     }
-  }
-  & > div:nth-child(3) {
-    grid-column: 2 / span 2;
-    grid-row: 1 / span 2;
-  }
-  & > div:nth-child(4) {
-    grid-column: 1 / span 2;
-    grid-row: 3 / span 1;
   }
 }
 

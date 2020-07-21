@@ -1,9 +1,6 @@
 <template>
   <div class='sidebar'>
-    <div class='sidebar-contact'>
-      <el-image v-for="(item,value) in squareUrlList" style="width: 45px; height:40px" :src="item" :key='value'
-        fit="contain"></el-image>
-    </div>
+
     <div class='sidebar-tab'>
       <div class='sidebar-tab-header'>
         <img :src="tabSrc">
@@ -13,7 +10,8 @@
 
       <el-divider></el-divider>
       <div class="sidebar-tab-content">
-        <el-tag v-for='(item,value) in type' :type='tageType[Math.floor(Math.random()*tageType.length)]' :key='value'>
+        <el-tag v-for='(item,value) in type' :type='tageType[Math.floor(Math.random()*tageType.length)]' :key='value'
+          @click="getArts(item)">
           {{item}}</el-tag>
       </div>
     </div>
@@ -21,18 +19,29 @@
       <div class='sidebar-link-header'>
         <img :src="linkSrc">
         <el-divider direction="vertical"></el-divider>
-        <span>链接</span>
+        <span>博客信息</span>
       </div>
 
       <el-divider></el-divider>
       <div class="sidebar-link-content">
         <ul>
-          <li v-for='(item,value) in 4' :key='value'>
-            <a href="http://www.96qufei.cn">个人简历</a>
+          <li v-for='(item,value) in info' :key='value'>
+            <div>
+              <i :class="i[value]"></i>
+              <span>{{item.title}}</span>
+            </div>
+            <div>
+
+              <span>{{item.value}}</span>
+            </div>
           </li>
         </ul>
       </div>
     </div>
+    <!-- <div class='sidebar-contact'>
+      <el-image v-for="(item,value) in squareUrlList" style="width: 45px; height:40px" :src="item" :key='value'
+        fit="contain"></el-image>
+    </div> -->
     <catKeyboard></catKeyboard>
 
   </div>
@@ -50,7 +59,14 @@ export default {
       squareUrlList: [`${this.ossSrc}WeChat.png`, `${this.ossSrc}email.png`, `${this.ossSrc}microblog.png`,
       `${this.ossSrc}subscription.png`
       ],
-      tageType: ['success', 'info', 'warning', 'danger', '']
+      tageType: ['success', 'info', 'warning', 'danger', ''],
+      info: [
+        { title: '文章数目', value: '7' },
+        { title: '评论数目', value: '2' },
+        { title: '运行天数', value: '22天' },
+        { title: '最后活动', value: '一天前' },
+      ],
+      i: ['el-icon-document', 'el-icon-edit', 'el-icon-smoking', 'el-icon-view']
     };
   },
   //监听属性 类似于data概念
@@ -73,7 +89,15 @@ export default {
   watch: {},
   //方法集合
   methods: {
-
+    getArts (val) {
+      console.log({ tags: [val] })
+      this.$store.commit('setIsArticleList', false)
+      this.$store.dispatch('handleArticles', { tags: [val] })
+        .then(res => {
+          console.log(res)
+          this.$router.push({ path: '/Index/content' })
+        })
+    }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created () {
@@ -92,7 +116,12 @@ export default {
   activated () { }, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
-<style scoped>
+<style scoped lang='less'>
+.sidebar {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  border-radius: 10px;
+}
 .sidebar-contact {
   background: #fff;
   display: grid;
@@ -105,9 +134,11 @@ export default {
 
 .sidebar-tab,
 .sidebar-link {
-  background: #fff;
-  /* padding: 10px; */
-  margin: 10px;
+  background-color: rgba(50, 50, 50, 0.1);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  color: #fff;
 }
 
 .sidebar-tab-header,
@@ -135,21 +166,22 @@ export default {
   padding: 10px 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  i {
+    font-size: 10px;
+    margin-right: 5px;
+  }
+  & > div:nth-child(2) {
+    span {
+      display: inline-block;
+      background-color: #00b2ff57;
+      border-radius: 25px;
+      padding: 2px 5px;
+    }
+  }
 }
-.sidebar-link-content ul li::before {
-  content: "";
-  display: block;
-  width: 5px;
-  height: 5px;
-  background-color: #ddd;
-  border-radius: 50px;
-  margin-right: 10px;
-  transition: 0.5s all;
-}
-.sidebar-link-content ul li:hover::before {
-  transform: scale(2.5);
-  box-shadow: 0px 0px 2px #aaa;
-}
+
 .sidebar-link-content a {
   text-decoration: none;
   color: #555;
@@ -157,8 +189,17 @@ export default {
 
 .sidebar-tab-content .el-tag {
   text-align: center;
-  min-width: 50px;
-  margin: 5px;
+  border-radius: 200px;
+  padding: 1%;
+  // background-color: rgba(255, 255, 255, 0.6);
+  transition: 0.5s all;
+  transform: scale(0.9);
+  font-size: 14px;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 }
 
 .sidebar-tab img,

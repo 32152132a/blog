@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <VueUeditorWrap v-model="msg" :config="myConfig" @beforeInit="addCustomButtom" :key="1"></VueUeditorWrap>
     <!-- <div class="preview" v-html="msg"></div> -->
     <!-- <vue-ueditor-wrap v-model="msg" :config="myConfig" @beforeInit="addCustomDialog" :key="2"></vue-ueditor-wrap> -->

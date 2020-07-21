@@ -11,7 +11,7 @@ export default {
    */
   state: {
     loginDialogVis: false,
-    isLogin: true,
+    isLogin: false,
     token: localStorage.getItem('token'),
     username: localStorage.getItem('username') || '',
     userinfo: localStorage.getItem('userinfo') && localStorage.getItem('userinfo') !== 'undefined' ?

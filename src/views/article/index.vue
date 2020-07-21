@@ -15,13 +15,22 @@ export default {
   data () {
     //这里存放数据
     return {
-      article: []
     };
   },
   //监听属性 类似于data概念
-  computed: {},
+  computed: {
+    article () {
+      if (this.$store.getters.getArticleList.length) {
+        return this.$store.getters.getArticleList
+      } else {
+        return []
+      }
+    },
+  },
   //监控data中的数据变化
-  watch: {},
+  watch: {
+
+  },
   //方法集合
   methods: {
 
@@ -32,9 +41,7 @@ export default {
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
-    this.$store.dispatch('handleArticles').then(res => {
-      this.article = res.message
-    })
+    this.$store.dispatch('handleArticles')
   },
   beforeCreate () { }, //生命周期 - 创建之前
   beforeMount () { }, //生命周期 - 挂载之前
@@ -46,42 +53,7 @@ export default {
 }
 </script>
 <style scoped>
-.chunk {
-  background-color: #fff;
-  padding: 10px 20px;
-  margin: 10px 0;
-}
-
-.chunk-header {
-  /* font-size: 2rem; */
-  font-size: 1.17em;
-  color: #2c3e50;
-  font-weight: bold;
-  margin: 10px 0 20px 10px;
-}
-
-.chunk-describe-img {
-  text-align: center;
-}
-
-.chunk-introduce {
-  font-size: 0.8rem;
-  color: #666;
-  font-weight: "楷体";
-}
-
-.chunk-introduce i {
-  color: #aaa;
-  margin: 0 5px;
-}
-
-.chunk-describe {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-
-.chunk-describe-content {
-  display: flex;
-  padding: 20px;
+.content {
+  padding: 0;
 }
 </style>

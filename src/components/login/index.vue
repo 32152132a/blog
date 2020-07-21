@@ -45,12 +45,23 @@ export default {
       // userLogin(this.form).then(res => {
       //   console.log(res)
       // })
-      this.$store.dispatch('handleUsers', this.form).then(res => {
+      if (this.form.email && this.form.password) {
+        this.$store.dispatch('handleUsers', this.form).then(res => {
+          this.$message({
+            message: '登录成功',
+            type: 'success'
+          });
+          this.$router.push({
+            path: '/index'
+          })
+        })
+      } else {
         this.$message({
-          message: '登录成功',
-          type: 'success'
+          message: '请输入信息',
+          type: 'warning'
         });
-      })
+      }
+
 
     }
   },
