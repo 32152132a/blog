@@ -32,12 +32,12 @@ export default {
         { title: 'js深入', summary: '作用域，闭包，原型链，事件循环，异步同步，迭代器，this，原理，性能优化', data: '2010-07-01' },
         { title: 'vue原理', summary: 'mvvm，双向数据绑定，虚拟dom，diff，性能优化', data: '2010-07-01' },
         { title: '网站博客搭建', summary: '运用 node mongdb vue element-ui less git 技术搭建', data: '2010-07-01' },
-        { title: 'vue-cli3,和webpack各种环境配置和常见问题', summary: '', data: '2010-07-01' },
-        { title: 'ts', summary: '', data: '2010-07-01' },
+        { title: 'vue-cli3,和webpack各种环境配置和常见问题一部分', summary: '', data: '2010-07-01' },
+        { title: 'ts', summary: '看视频学习ts', data: '2010-07-01' },
         { title: 'react', summary: '', data: '2010-07-01' },
         { title: '微信小程序', summary: '', data: '2010-07-01' },
       ],
-      active: 19
+      active: 20
     }
   }
 
