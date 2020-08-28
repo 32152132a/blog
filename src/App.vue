@@ -11,9 +11,7 @@
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: #2c3e50;
-  background-color: #f1f1f1;
-  background-size: contain;
-  background-image: linear-gradient(to bottom, #7a88ff 10%, #7affaf);
+ 
   padding-bottom: 150px;
 }
 

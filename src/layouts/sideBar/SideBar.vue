@@ -153,7 +153,6 @@ export default {
 
 .sidebar-tab-content {
   display: grid;
-  gap: 5px;
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
 }
@@ -189,11 +188,12 @@ export default {
 
 .sidebar-tab-content .el-tag {
   text-align: center;
-  border-radius: 200px;
+  border-radius: 13px;
   padding: 1%;
   // background-color: rgba(255, 255, 255, 0.6);
   transition: 0.5s all;
   transform: scale(0.9);
+  padding:0 3px;
   font-size: 14px;
   &:hover {
     background-color: rgba(255, 255, 255, 0.9);

@@ -16,8 +16,8 @@ export default {
   data () {
     return {
       directory: [
-        { title: '颜色速记', summary: '随机产生颜色块，记住所有指定颜色块的位置即可胜利,灵感来源于看密室逃脱里的一个解密游戏', router: '/Index/play/randomColor' },
-        { title: '等式成立', summary: '正在开发中...', router: '/Index/play/randomColor' },
+        { title: '点一点', summary: '随机产生颜色块，记住所有指定颜色块的位置即可胜利,灵感来源于看密室逃脱里的一个解密游戏', router: '/Index/play/randomColor' },
+        { title: '跳一跳', summary: '小恐龙跳一跳，点击空格，躲避障碍物灵感来源于浏览器未连接网络的界面', router: '/Index/play/jump' },
       ]
     }
   }

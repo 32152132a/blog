@@ -55,14 +55,25 @@ const routes = [{
         path: '/Index/play',
         component: () => import('@/views/play/index'),
         children: [{
-          path: '/Index/play',
-          name: 'nav',
-          component: () => import('@/views/play/nav')
-        }, {
-          path: '/Index/play/randomColor',
-          name: 'randomColor',
-          component: () => import('@/views/play/randomColor')
-        }]
+            path: '/Index/play',
+            name: 'nav',
+            component: () => import('@/views/play/nav')
+          }, {
+            path: '/Index/play/randomColor',
+            name: 'randomColor',
+            component: () => import('@/views/play/randomColor')
+          }, {
+            path: '/Index/play/jump',
+            name: 'jump',
+            component: () => import('@/views/play/jump')
+          },
+          {
+            path: '/Index/play/turntable',
+            name: 'turntable',
+            component: () => import('@/views/play/turntable')
+          }
+
+        ]
       },
 
       {

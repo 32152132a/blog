@@ -46,7 +46,7 @@ export default {
         link: 'http://www.rhzhineng.com',
         describe: '公司网站'
       }],
-      style: { background: "rgba(255, 255, 255, 0.6)", color: "#000" }
+      style: { background: "rgba(255, 255, 255, 0.6)", color: "#555" }
     }
   }
 }
@@ -58,9 +58,11 @@ export default {
   border-radius: 10px;
   margin: 10px 0;
   padding: 20px;
+  color: #555;
 }
 .el-table {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 10px;
+   color: #555;
 }
 </style>
