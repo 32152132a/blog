@@ -64,6 +64,7 @@ export default {
 </script>
 <style scoped lang='less'>
 .body {
+  height: 100vh;
   .header {
     max-width: 1180px;
     margin: 0 auto;
@@ -80,6 +81,7 @@ export default {
   padding: 10px 20px;
   max-width: 1200px;
   margin: 0 auto;
+
   & > .content {
     min-width: 600px;
     background: rgba(255, 255, 255, 0.3);
