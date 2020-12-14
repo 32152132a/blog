@@ -60,7 +60,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.3);
   text-align: center;
   border-radius: 10px;
-  color: #fff;
+  color: #333;
   .nav-header {
     display: flex;
     height: 60px;
@@ -82,7 +82,7 @@ export default {
       height: 40px;
       width: 100%;
       line-height: 40px;
-      color: #fff;
+      color: #666;
       text-align: left;
     }
   }
