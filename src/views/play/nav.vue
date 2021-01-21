@@ -18,6 +18,8 @@ export default {
       directory: [
         { title: '点一点', summary: '随机产生颜色块，记住所有指定颜色块的位置即可胜利,灵感来源于看密室逃脱里的一个解密游戏', router: '/Index/play/randomColor' },
         { title: '跳一跳', summary: '小恐龙跳一跳，点击空格，躲避障碍物灵感来源于浏览器未连接网络的界面', router: '/Index/play/jump' },
+        { title: '抽  奖', summary: '未完成，点击抽奖还有bug', router: '/Index/play/turntable' },
+        { title: '抢红包', summary: '拼手气抢红包，灵感来源于一次面试', router: '/Index/play/envelope' },
       ]
     }
   }

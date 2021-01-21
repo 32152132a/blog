@@ -71,6 +71,11 @@ const routes = [{
             path: '/Index/play/turntable',
             name: 'turntable',
             component: () => import('@/views/play/turntable')
+          },
+          {
+            path: '/Index/play/envelope',
+            name: 'envelope',
+            component: () => import('@/views/play/envelope')
           }
 
         ]
