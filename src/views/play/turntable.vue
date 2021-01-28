@@ -1,7 +1,13 @@
 <template>
   <div class="jump">
     <div class="turntable">
-      <div :class="{'selected':selectIndex == item}" v-for="item in 12" :key="item">{{item}}</div>
+      <div
+        :class="{ selected: selectIndex == item }"
+        v-for="item in 12"
+        :key="item"
+      >
+        {{ item }}
+      </div>
       <div class="btn" @click="start">开始</div>
     </div>
   </div>

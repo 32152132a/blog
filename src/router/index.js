@@ -76,7 +76,13 @@ const routes = [{
             path: '/Index/play/envelope',
             name: 'envelope',
             component: () => import('@/views/play/envelope')
+          },
+          {
+            path: '/Index/play/wordcloud',
+            name: 'wordcloud',
+            component: () => import('@/views/play/wordcloud')
           }
+          
 
         ]
       },
